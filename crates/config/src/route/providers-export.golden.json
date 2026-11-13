@@ -1,0 +1,1553 @@
+{
+  "schemaVersion": 1,
+  "runtimeVersion": "0.10.3",
+  "routes": [
+    {
+      "id": "anthropic",
+      "family": "anthropic",
+      "label": "Anthropic",
+      "endpoint": "https://api.anthropic.com",
+      "wire": "anthropic-messages",
+      "defaultModel": "claude-sonnet-5-5",
+      "envVars": [
+        "ANTHROPIC_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "claude-fable-5"
+        },
+        {
+          "id": "claude-fable-5-1",
+          "canonical": "anthropic/claude-fable-5-1"
+        },
+        {
+          "id": "claude-fable-5-2",
+          "canonical": "anthropic/claude-fable-5-2"
+        },
+        {
+          "id": "claude-haiku-4-5",
+          "canonical": "anthropic/claude-haiku-4-5"
+        },
+        {
+          "id": "claude-haiku-5-5",
+          "canonical": "anthropic/claude-haiku-5-5"
+        },
+        {
+          "id": "claude-opus-4-8"
+        },
+        {
+          "id": "claude-opus-5",
+          "canonical": "anthropic/claude-opus-5"
+        },
+        {
+          "id": "claude-opus-5-5",
+          "canonical": "anthropic/claude-opus-5-5"
+        },
+        {
+          "id": "claude-sonnet-4-6"
+        },
+        {
+          "id": "claude-sonnet-5"
+        },
+        {
+          "id": "claude-sonnet-5-5",
+          "canonical": "anthropic/claude-sonnet-5-5",
+          "default": true
+        }
+      ],
+      "transport": "anthropic-messages"
+    },
+    {
+      "id": "arcee",
+      "family": "arcee",
+      "label": "Arcee AI",
+      "endpoint": "https://api.arcee.ai/api/v1",
+      "wire": "chat-completions",
+      "defaultModel": "trinity-large-thinking",
+      "envVars": [
+        "ARCEE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "trinity-large-thinking",
+          "canonical": "arcee-ai/trinity-large-thinking",
+          "default": true
+        },
+        {
+          "id": "trinity-mini"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "atlascloud",
+      "family": "atlascloud",
+      "label": "AtlasCloud",
+      "endpoint": "https://api.atlascloud.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/deepseek-v4-flash",
+      "envVars": [
+        "ATLASCLOUD_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "codewhale",
+      "family": "codewhale",
+      "label": "Codewhale",
+      "endpoint": "https://api.codewhale.net/v1",
+      "wire": "model-aware",
+      "defaultModel": "deepseek/deepseek-v4-pro",
+      "envVars": [
+        "CODEWHALE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "model-aware"
+    },
+    {
+      "id": "concentrate",
+      "family": "concentrate",
+      "label": "Concentrate",
+      "endpoint": "https://api.concentrate.ai/v1",
+      "wire": "responses",
+      "defaultModel": "deepseek-v4-pro",
+      "envVars": [
+        "CONCENTRATE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "open-ai-responses"
+    },
+    {
+      "id": "csdn",
+      "family": "csdn",
+      "label": "CSDN",
+      "endpoint": "https://ai.csdn.net/api/model/v1",
+      "wire": "chat-completions",
+      "defaultModel": "glm_for_coding",
+      "envVars": [
+        "CSDN_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "custom",
+      "family": "custom",
+      "label": "Custom (OpenAI-compatible)",
+      "endpoint": "http://localhost/v1",
+      "wire": "chat-completions",
+      "defaultModel": "custom-model",
+      "envVars": [],
+      "auth": [
+        {
+          "kind": "external-consent",
+          "label": "External consent"
+        }
+      ],
+      "transport": "custom"
+    },
+    {
+      "id": "deepinfra",
+      "family": "deepinfra",
+      "label": "DeepInfra",
+      "endpoint": "https://api.deepinfra.com/v1/openai",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/DeepSeek-V4-Pro",
+      "envVars": [
+        "DEEPINFRA_API_KEY",
+        "DEEPINFRA_TOKEN"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "deepseek",
+      "family": "deepseek",
+      "label": "DeepSeek",
+      "endpoint": "https://api.deepseek.com/beta",
+      "wire": "model-aware",
+      "defaultModel": "deepseek-flash",
+      "envVars": [
+        "DEEPSEEK_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek-flash",
+          "canonical": "deepseek/deepseek-v4.1-flash-1017",
+          "default": true
+        },
+        {
+          "id": "deepseek-v4-flash",
+          "canonical": "deepseek/deepseek-v4.1-flash-1017"
+        },
+        {
+          "id": "deepseek-v4-flash-vision-exp",
+          "canonical": "deepseek/deepseek-v4.1-flash-1017"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "canonical": "deepseek/deepseek-v4-pro-0813"
+        },
+        {
+          "id": "deepseek-v4-pro-0813",
+          "canonical": "deepseek/deepseek-v4-pro-0813"
+        },
+        {
+          "id": "deepseek-v4.1-flash",
+          "canonical": "deepseek/deepseek-v4.1-flash"
+        }
+      ],
+      "transport": "model-aware"
+    },
+    {
+      "id": "deepseek-anthropic",
+      "family": "deepseek",
+      "label": "DeepSeek (Anthropic API)",
+      "endpoint": "https://api.deepseek.com/anthropic",
+      "wire": "anthropic-messages",
+      "defaultModel": "deepseek-flash",
+      "envVars": [
+        "DEEPSEEK_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "anthropic-messages"
+    },
+    {
+      "id": "edenai",
+      "family": "edenai",
+      "label": "Eden AI",
+      "endpoint": "https://api.edenai.run/v3",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek/deepseek-v4-pro",
+      "envVars": [
+        "EDENAI_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "fireworks",
+      "family": "fireworks",
+      "label": "Fireworks AI",
+      "endpoint": "https://api.fireworks.ai/inference/v1",
+      "wire": "chat-completions",
+      "defaultModel": "accounts/fireworks/models/deepseek-v4-pro",
+      "envVars": [
+        "FIREWORKS_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "accounts/fireworks/models/deepseek-v4-pro",
+          "canonical": "deepseek-v4-pro",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "google",
+      "family": "google",
+      "label": "Google Gemini",
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "wire": "chat-completions",
+      "defaultModel": "gemini-3.1-pro-preview",
+      "envVars": [
+        "GOOGLE_API_KEY",
+        "GEMINI_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "gemini-3.1-flash-lite"
+        },
+        {
+          "id": "gemini-3.1-pro-preview",
+          "default": true
+        },
+        {
+          "id": "gemini-3.5-flash"
+        },
+        {
+          "id": "gemini-3.5-flash-lite",
+          "canonical": "google/gemini-3.5-flash-lite"
+        },
+        {
+          "id": "gemini-3.6-flash",
+          "canonical": "google/gemini-3.6-flash"
+        },
+        {
+          "id": "gemini-3.7-flash",
+          "canonical": "google/gemini-3.7-flash"
+        },
+        {
+          "id": "gemini-3.8-flash",
+          "canonical": "google/gemini-3.8-flash"
+        },
+        {
+          "id": "gemini-4-argon",
+          "canonical": "google/gemini-4-argon"
+        },
+        {
+          "id": "gemini-4-carbon",
+          "canonical": "google/gemini-4-carbon"
+        },
+        {
+          "id": "gemini-flash-latest"
+        },
+        {
+          "id": "gemini-flash-lite-latest"
+        },
+        {
+          "id": "gemma-4-26b-a4b-it"
+        },
+        {
+          "id": "gemma-4-31b-it"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "huggingface",
+      "family": "huggingface",
+      "label": "Hugging Face",
+      "endpoint": "https://router.huggingface.co/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/DeepSeek-V4-Pro",
+      "envVars": [
+        "HUGGINGFACE_API_KEY",
+        "HF_TOKEN"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "longcat",
+      "family": "longcat",
+      "label": "Meituan LongCat",
+      "endpoint": "https://api.longcat.chat/openai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "LongCat-2.0",
+      "envVars": [
+        "LONGCAT_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "meta",
+      "family": "meta",
+      "label": "Meta Model API",
+      "endpoint": "https://api.meta.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "muse-spark-1.3",
+      "envVars": [
+        "META_MODEL_API_KEY",
+        "MODEL_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "muse-spark-1.1",
+          "canonical": "meta/muse-spark-1.1"
+        },
+        {
+          "id": "muse-spark-1.2",
+          "canonical": "meta/muse-spark-1.2"
+        },
+        {
+          "id": "muse-spark-1.2-contributor",
+          "canonical": "meta/muse-spark-1.2"
+        },
+        {
+          "id": "muse-spark-1.3",
+          "canonical": "meta/muse-spark-1.3",
+          "default": true
+        },
+        {
+          "id": "muse-spark-1.3-contributor",
+          "canonical": "meta/muse-spark-1.3"
+        },
+        {
+          "id": "muse-wonder-1.0",
+          "canonical": "meta/muse-wonder-1.0"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "minimax",
+      "family": "minimax",
+      "label": "MiniMax",
+      "endpoint": "https://api.minimax.io/v1",
+      "wire": "chat-completions",
+      "defaultModel": "MiniMax-M3",
+      "envVars": [
+        "MINIMAX_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "MiniMax-M2.7"
+        },
+        {
+          "id": "MiniMax-M2.7-highspeed"
+        },
+        {
+          "id": "MiniMax-M3",
+          "default": true
+        },
+        {
+          "id": "MiniMax-M3.1-Flash",
+          "canonical": "minimax/MiniMax-M3.1-Flash"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "minimax-anthropic",
+      "family": "minimax",
+      "label": "MiniMax (Anthropic API)",
+      "endpoint": "https://api.minimax.io/anthropic",
+      "wire": "anthropic-messages",
+      "defaultModel": "MiniMax-M3",
+      "envVars": [
+        "MINIMAX_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "MiniMax-M2.7"
+        },
+        {
+          "id": "MiniMax-M2.7-highspeed"
+        },
+        {
+          "id": "MiniMax-M3",
+          "default": true
+        },
+        {
+          "id": "MiniMax-M3.1-Flash",
+          "canonical": "minimax/MiniMax-M3.1-Flash"
+        }
+      ],
+      "transport": "anthropic-messages"
+    },
+    {
+      "id": "mistral",
+      "family": "mistral",
+      "label": "Mistral AI",
+      "endpoint": "https://api.mistral.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "mistral-code-latest",
+      "envVars": [
+        "MISTRAL_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "modelscope",
+      "family": "modelscope",
+      "label": "ModelScope",
+      "endpoint": "https://api-inference.modelscope.cn/v1",
+      "wire": "chat-completions",
+      "defaultModel": "Qwen/Qwen3.5-397B-A17B",
+      "envVars": [
+        "MODELSCOPE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "modelstudio-coding-plan",
+      "family": "alibaba-modelstudio",
+      "label": "Alibaba Cloud Model Studio (Coding Plan)",
+      "endpoint": "https://coding-intl.dashscope.aliyuncs.com/v1",
+      "wire": "chat-completions",
+      "defaultModel": "qwen3.8-max",
+      "envVars": [
+        "MODELSTUDIO_API_KEY",
+        "DASHSCOPE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek-v4-flash-0731",
+          "canonical": "deepseek/deepseek-v4-flash-0731"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "canonical": "deepseek/deepseek-v4-pro"
+        },
+        {
+          "id": "glm-5.2",
+          "canonical": "zhipuai/glm-5.2"
+        },
+        {
+          "id": "qwen3.7-plus",
+          "canonical": "alibaba/qwen3.7-plus"
+        },
+        {
+          "id": "qwen3.8-max",
+          "canonical": "alibaba/qwen3.8-max",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "modelstudio-coding-plan-anthropic",
+      "family": "alibaba-modelstudio",
+      "label": "Alibaba Cloud Model Studio (Coding Plan, Anthropic API)",
+      "endpoint": "https://coding-intl.dashscope.aliyuncs.com/apps/anthropic",
+      "wire": "anthropic-messages",
+      "defaultModel": "qwen3.8-max",
+      "envVars": [
+        "MODELSTUDIO_API_KEY",
+        "DASHSCOPE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek-v4-flash-0731",
+          "canonical": "deepseek/deepseek-v4-flash-0731"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "canonical": "deepseek/deepseek-v4-pro"
+        },
+        {
+          "id": "glm-5.2",
+          "canonical": "zhipuai/glm-5.2"
+        },
+        {
+          "id": "qwen3.7-plus",
+          "canonical": "alibaba/qwen3.7-plus"
+        },
+        {
+          "id": "qwen3.8-max",
+          "canonical": "alibaba/qwen3.8-max",
+          "default": true
+        }
+      ],
+      "transport": "anthropic-messages"
+    },
+    {
+      "id": "modelstudio-token-plan",
+      "family": "alibaba-modelstudio",
+      "label": "Alibaba Cloud Model Studio",
+      "endpoint": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "wire": "chat-completions",
+      "defaultModel": "qwen3.8-max",
+      "envVars": [
+        "MODELSTUDIO_API_KEY",
+        "DASHSCOPE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek-v4-flash-0731",
+          "canonical": "deepseek/deepseek-v4-flash-0731"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "canonical": "deepseek/deepseek-v4-pro"
+        },
+        {
+          "id": "glm-5.2",
+          "canonical": "zhipuai/glm-5.2"
+        },
+        {
+          "id": "qwen3.6-flash",
+          "canonical": "alibaba/qwen3.6-flash"
+        },
+        {
+          "id": "qwen3.7-max",
+          "canonical": "alibaba/qwen3.7-max"
+        },
+        {
+          "id": "qwen3.7-plus",
+          "canonical": "alibaba/qwen3.7-plus"
+        },
+        {
+          "id": "qwen3.8-max",
+          "canonical": "alibaba/qwen3.8-max",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "modelstudio-token-plan-anthropic",
+      "family": "alibaba-modelstudio",
+      "label": "Alibaba Cloud Model Studio (Token Plan, Anthropic API)",
+      "endpoint": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic",
+      "wire": "anthropic-messages",
+      "defaultModel": "qwen3.8-max",
+      "envVars": [
+        "MODELSTUDIO_API_KEY",
+        "DASHSCOPE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek-v4-flash-0731",
+          "canonical": "deepseek/deepseek-v4-flash-0731"
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "canonical": "deepseek/deepseek-v4-pro"
+        },
+        {
+          "id": "glm-5.2",
+          "canonical": "zhipuai/glm-5.2"
+        },
+        {
+          "id": "qwen3.6-flash",
+          "canonical": "alibaba/qwen3.6-flash"
+        },
+        {
+          "id": "qwen3.7-max",
+          "canonical": "alibaba/qwen3.7-max"
+        },
+        {
+          "id": "qwen3.7-plus",
+          "canonical": "alibaba/qwen3.7-plus"
+        },
+        {
+          "id": "qwen3.8-max",
+          "canonical": "alibaba/qwen3.8-max",
+          "default": true
+        }
+      ],
+      "transport": "anthropic-messages"
+    },
+    {
+      "id": "moonshot",
+      "family": "moonshot",
+      "label": "Moonshot/Kimi",
+      "endpoint": "https://api.moonshot.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "kimi-k2.7-code",
+      "envVars": [
+        "MOONSHOT_API_KEY",
+        "KIMI_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "kimi-k2.6",
+          "canonical": "moonshotai/kimi-k2.6"
+        },
+        {
+          "id": "kimi-k2.7-code",
+          "canonical": "moonshotai/kimi-k2.7-code",
+          "default": true
+        },
+        {
+          "id": "kimi-k2.7-code-highspeed",
+          "canonical": "moonshotai/kimi-k2.7-code"
+        },
+        {
+          "id": "kimi-k3",
+          "canonical": "moonshotai/kimi-k3"
+        },
+        {
+          "id": "kimi-k3.1-pro",
+          "canonical": "moonshotai/kimi-k3.1-pro"
+        },
+        {
+          "id": "kimi-k3.1-pro-highspeed",
+          "canonical": "moonshotai/kimi-k3.1-pro"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "novita",
+      "family": "novita",
+      "label": "Novita AI",
+      "endpoint": "https://api.novita.ai/openai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek/deepseek-v4-pro",
+      "envVars": [
+        "NOVITA_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek/deepseek-v4-pro",
+          "canonical": "deepseek/deepseek-v4-pro",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "nvidia-nim",
+      "family": "nvidia-nim",
+      "label": "NVIDIA NIM",
+      "endpoint": "https://integrate.api.nvidia.com/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/deepseek-v4-pro",
+      "envVars": [
+        "NVIDIA_API_KEY",
+        "NVIDIA_NIM_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "ollama",
+      "family": "ollama",
+      "label": "Ollama",
+      "endpoint": "http://localhost:11434/v1",
+      "wire": "chat-completions",
+      "defaultModel": "unknown",
+      "envVars": [
+        "OLLAMA_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "keyless",
+          "label": "Keyless"
+        }
+      ],
+      "transport": "local-runtime"
+    },
+    {
+      "id": "ollama-cloud",
+      "family": "ollama",
+      "label": "Ollama Cloud",
+      "endpoint": "https://ollama.com/v1",
+      "wire": "chat-completions",
+      "defaultModel": "gpt-oss:120b",
+      "envVars": [
+        "OLLAMA_CLOUD_API_KEY",
+        "OLLAMA_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "openai",
+      "family": "openai",
+      "label": "OpenAI-compatible",
+      "endpoint": "https://api.openai.com/v1",
+      "wire": "chat-completions",
+      "defaultModel": "gpt-5.6",
+      "envVars": [
+        "OPENAI_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "gpt-5.3-codex"
+        },
+        {
+          "id": "gpt-5.5"
+        },
+        {
+          "id": "gpt-5.5-pro"
+        },
+        {
+          "id": "gpt-5.6",
+          "canonical": "openai/gpt-5.6-sol",
+          "default": true
+        },
+        {
+          "id": "gpt-5.6-luna",
+          "canonical": "openai/gpt-5.6-luna"
+        },
+        {
+          "id": "gpt-5.6-sol",
+          "canonical": "openai/gpt-5.6-sol"
+        },
+        {
+          "id": "gpt-5.6-terra",
+          "canonical": "openai/gpt-5.6-terra"
+        },
+        {
+          "id": "gpt-6-astra",
+          "canonical": "openai/gpt-6-astra"
+        },
+        {
+          "id": "gpt-6-luna",
+          "canonical": "openai/gpt-6-luna"
+        },
+        {
+          "id": "gpt-6-sol",
+          "canonical": "openai/gpt-6-sol"
+        },
+        {
+          "id": "gpt-6.1-sol",
+          "canonical": "openai/gpt-6.1-sol"
+        },
+        {
+          "id": "gpt-6.1-terra",
+          "canonical": "openai/gpt-6.1-terra"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "openai-codex",
+      "family": "openai-codex",
+      "label": "OpenAI Codex (ChatGPT)",
+      "endpoint": "https://api.openai.com/v1",
+      "wire": "responses",
+      "defaultModel": "gpt-6.1-sol",
+      "envVars": [
+        "OPENAI_CODEX_ACCESS_TOKEN",
+        "CODEX_ACCESS_TOKEN"
+      ],
+      "auth": [
+        {
+          "kind": "oauth",
+          "label": "OAuth"
+        }
+      ],
+      "transport": "codex"
+    },
+    {
+      "id": "opencode-go",
+      "family": "opencode-go",
+      "label": "OpenCode Go",
+      "endpoint": "https://opencode.ai/zen/go/v1",
+      "wire": "model-aware",
+      "defaultModel": "deepseek-v4-pro",
+      "envVars": [
+        "OPENCODE_GO_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "model-aware"
+    },
+    {
+      "id": "opencode-zen",
+      "family": "opencode-zen",
+      "label": "OpenCode Zen",
+      "endpoint": "https://opencode.ai/zen/v1",
+      "wire": "model-aware",
+      "defaultModel": "gpt-5.6",
+      "envVars": [
+        "OPENCODE_ZEN_API_KEY",
+        "OPENCODE_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "model-aware"
+    },
+    {
+      "id": "openmodel",
+      "family": "openmodel",
+      "label": "OpenModel",
+      "endpoint": "https://api.openmodel.ai",
+      "wire": "anthropic-messages",
+      "defaultModel": "deepseek-v4-flash",
+      "envVars": [
+        "OPENMODEL_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "anthropic-messages"
+    },
+    {
+      "id": "openrouter",
+      "family": "openrouter",
+      "label": "OpenRouter",
+      "endpoint": "https://openrouter.ai/api/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek/deepseek-v4-pro",
+      "envVars": [
+        "OPENROUTER_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek/deepseek-v4-flash",
+          "canonical": "deepseek/deepseek-v4-flash"
+        },
+        {
+          "id": "deepseek/deepseek-v4-pro",
+          "canonical": "deepseek/deepseek-v4-pro",
+          "default": true
+        },
+        {
+          "id": "dots-studio/dots-3-note-preview:free"
+        },
+        {
+          "id": "minimax/minimax-m3",
+          "canonical": "minimax/MiniMax-M3"
+        },
+        {
+          "id": "qwen/qwen3.6-35b-a3b",
+          "canonical": "alibaba/qwen3.6-35b-a3b"
+        },
+        {
+          "id": "qwen/qwen3.6-flash",
+          "canonical": "alibaba/qwen3.6-flash"
+        },
+        {
+          "id": "qwen/qwen3.6-plus",
+          "canonical": "alibaba/qwen3.6-plus"
+        },
+        {
+          "id": "qwen/qwen3.7-plus",
+          "canonical": "alibaba/qwen3.7-plus"
+        },
+        {
+          "id": "qwen/qwen3.8-flash",
+          "canonical": "alibaba/qwen3.8-flash"
+        },
+        {
+          "id": "tencent/hy4",
+          "canonical": "tencent/hy4"
+        },
+        {
+          "id": "z-ai/glm-5.2",
+          "canonical": "zhipuai/glm-5.2"
+        },
+        {
+          "id": "z-ai/glm-5.3",
+          "canonical": "zhipuai/glm-5.3"
+        },
+        {
+          "id": "z-ai/glm-5.3-flash",
+          "canonical": "zhipuai/glm-5.3-flash"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "orcarouter",
+      "family": "orcarouter",
+      "label": "OrcaRouter",
+      "endpoint": "https://api.orcarouter.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek/deepseek-v4.1-flash-1017",
+      "envVars": [
+        "ORCAROUTER_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        },
+        {
+          "kind": "oauth",
+          "label": "OAuth"
+        }
+      ],
+      "models": [
+        {
+          "id": "anthropic/claude-opus-5",
+          "canonical": "anthropic/claude-opus-5"
+        },
+        {
+          "id": "anthropic/claude-sonnet-5",
+          "canonical": "anthropic/claude-sonnet-5"
+        },
+        {
+          "id": "deepseek/deepseek-v4-flash-0731",
+          "canonical": "deepseek/deepseek-v4-flash-0731"
+        },
+        {
+          "id": "deepseek/deepseek-v4-pro-0813",
+          "canonical": "deepseek/deepseek-v4-pro-0813"
+        },
+        {
+          "id": "deepseek/deepseek-v4.1-flash-1017",
+          "default": true
+        },
+        {
+          "id": "google/gemini-flash-latest",
+          "canonical": "google/gemini-flash-latest"
+        },
+        {
+          "id": "grok/grok-4.6",
+          "canonical": "xai/grok-4.6"
+        },
+        {
+          "id": "kimi/kimi-k3",
+          "canonical": "moonshotai/kimi-k3"
+        },
+        {
+          "id": "meta/muse-spark-1.2",
+          "canonical": "meta/muse-spark-1.2"
+        },
+        {
+          "id": "openai/gpt-5.6-sol",
+          "canonical": "openai/gpt-5.6-sol"
+        },
+        {
+          "id": "orcarouter/free"
+        },
+        {
+          "id": "qwen/qwen3.8-27b",
+          "canonical": "alibaba/qwen3.8-27b"
+        },
+        {
+          "id": "qwen/qwen3.8-max",
+          "canonical": "alibaba/qwen3.8-max"
+        },
+        {
+          "id": "tencent/hy3",
+          "canonical": "tencent/hy3"
+        },
+        {
+          "id": "z-ai/glm-5.3",
+          "canonical": "zhipuai/glm-5.3"
+        },
+        {
+          "id": "z-ai/glm-5.3-flash",
+          "canonical": "zhipuai/glm-5.3-flash"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "qianfan",
+      "family": "qianfan",
+      "label": "Baidu Qianfan",
+      "endpoint": "https://api.baiduqianfan.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "ernie-4.0-turbo-8k",
+      "envVars": [
+        "QIANFAN_API_KEY",
+        "BAIDU_QIANFAN_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "sakana",
+      "family": "sakana",
+      "label": "Sakana AI (Fugu)",
+      "endpoint": "https://api.sakana.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "fugu",
+      "envVars": [
+        "FUGU_API_KEY",
+        "SAKANA_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "sglang",
+      "family": "sglang",
+      "label": "SGLang",
+      "endpoint": "http://localhost:30000/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/DeepSeek-V4-Pro",
+      "envVars": [
+        "SGLANG_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "keyless",
+          "label": "Keyless"
+        }
+      ],
+      "transport": "local-runtime"
+    },
+    {
+      "id": "siliconflow",
+      "family": "siliconflow",
+      "label": "SiliconFlow",
+      "endpoint": "https://api.siliconflow.com/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/DeepSeek-V4-Pro",
+      "envVars": [
+        "SILICONFLOW_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek-ai/DeepSeek-V4-Flash",
+          "canonical": "deepseek/deepseek-v4-flash"
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-V4-Pro",
+          "canonical": "deepseek/deepseek-v4-pro",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "siliconflow-CN",
+      "family": "siliconflow",
+      "label": "SiliconFlow (China)",
+      "endpoint": "https://api.siliconflow.cn/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/DeepSeek-V4-Pro",
+      "envVars": [
+        "SILICONFLOW_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "stepfun",
+      "family": "stepfun",
+      "label": "StepFun / StepFlash",
+      "endpoint": "https://api.stepfun.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "step-5-preview",
+      "envVars": [
+        "STEPFUN_API_KEY",
+        "STEP_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "step-3.5-flash",
+          "canonical": "stepfun/step-3.5-flash"
+        },
+        {
+          "id": "step-3.5-flash-2603",
+          "canonical": "stepfun/step-3.5-flash-2603"
+        },
+        {
+          "id": "step-3.7-flash",
+          "canonical": "stepfun/step-3.7-flash"
+        },
+        {
+          "id": "step-5-preview",
+          "canonical": "stepfun/step-5-preview",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "telecomjs",
+      "family": "telecomjs",
+      "label": "TelecomJS TokenHub",
+      "endpoint": "https://aigw.telecomjs.com/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-v4-pro",
+      "envVars": [
+        "TELECOMJS_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "together",
+      "family": "together",
+      "label": "Together AI",
+      "endpoint": "https://api.together.xyz/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/DeepSeek-V4-Pro",
+      "envVars": [
+        "TOGETHER_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "deepseek-ai/DeepSeek-V4-Flash",
+          "canonical": "deepseek-v4-flash"
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-V4-Pro",
+          "canonical": "deepseek-v4-pro",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "vllm",
+      "family": "vllm",
+      "label": "vLLM",
+      "endpoint": "http://localhost:8000/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-ai/DeepSeek-V4-Pro",
+      "envVars": [
+        "VLLM_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "keyless",
+          "label": "Keyless"
+        }
+      ],
+      "transport": "local-runtime"
+    },
+    {
+      "id": "volcengine",
+      "family": "volcengine",
+      "label": "Volcengine Ark",
+      "endpoint": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "wire": "chat-completions",
+      "defaultModel": "DeepSeek-V4-Pro",
+      "envVars": [
+        "VOLCENGINE_API_KEY",
+        "VOLCENGINE_ARK_API_KEY",
+        "ARK_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "wanjie-ark",
+      "family": "wanjie-ark",
+      "label": "Wanjie Ark",
+      "endpoint": "https://maas-openapi.wanjiedata.com/api/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek-reasoner",
+      "envVars": [
+        "WANJIE_ARK_API_KEY",
+        "WANJIE_API_KEY",
+        "WANJIE_MAAS_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "xai",
+      "family": "xai",
+      "label": "xAI",
+      "endpoint": "https://api.x.ai/v1",
+      "wire": "chat-completions",
+      "defaultModel": "grok-4.7",
+      "envVars": [
+        "XAI_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        },
+        {
+          "kind": "oauth",
+          "label": "OAuth"
+        }
+      ],
+      "models": [
+        {
+          "id": "grok-4.3"
+        },
+        {
+          "id": "grok-4.5",
+          "canonical": "xai/grok-4.5"
+        },
+        {
+          "id": "grok-4.6",
+          "canonical": "xai/grok-4.6"
+        },
+        {
+          "id": "grok-4.7",
+          "canonical": "xai/grok-4.7",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "xiaomi-mimo",
+      "family": "xiaomi-mimo",
+      "label": "Xiaomi MiMo",
+      "endpoint": "https://token-plan-sgp.xiaomimimo.com/v1",
+      "wire": "chat-completions",
+      "defaultModel": "mimo-v2.6-pro",
+      "envVars": [
+        "XIAOMI_MIMO_TOKEN_PLAN_API_KEY",
+        "MIMO_TOKEN_PLAN_API_KEY",
+        "XIAOMI_MIMO_API_KEY",
+        "XIAOMI_API_KEY",
+        "MIMO_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "mimo-v2.6-flash",
+          "canonical": "xiaomi/mimo-v2.6-flash"
+        },
+        {
+          "id": "mimo-v2.6-pro",
+          "canonical": "xiaomi/mimo-v2.6-pro",
+          "default": true
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "zai",
+      "family": "zai",
+      "label": "Zhipu AI / Z.ai",
+      "endpoint": "https://api.z.ai/api/coding/paas/v4",
+      "wire": "chat-completions",
+      "defaultModel": "GLM-5.3",
+      "envVars": [
+        "ZAI_API_KEY",
+        "Z_AI_API_KEY",
+        "ZHIPU_API_KEY",
+        "GLM_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "models": [
+        {
+          "id": "GLM-5-Turbo",
+          "canonical": "zhipuai/glm-5-turbo"
+        },
+        {
+          "id": "GLM-5.2",
+          "canonical": "zhipuai/glm-5.2"
+        },
+        {
+          "id": "GLM-5.3",
+          "canonical": "zhipuai/glm-5.3",
+          "default": true
+        },
+        {
+          "id": "GLM-5.3-Flash",
+          "canonical": "zhipuai/glm-5.3-flash"
+        },
+        {
+          "id": "glm-5.1",
+          "canonical": "zhipuai/glm-5.1"
+        }
+      ],
+      "transport": "chat-completions"
+    },
+    {
+      "id": "zenmux",
+      "family": "zenmux",
+      "label": "ZenMux",
+      "endpoint": "https://zenmux.ai/api/v1",
+      "wire": "chat-completions",
+      "defaultModel": "deepseek/deepseek-v4.1-flash",
+      "envVars": [
+        "ZENMUX_API_KEY"
+      ],
+      "auth": [
+        {
+          "kind": "api-key",
+          "label": "API key"
+        }
+      ],
+      "transport": "chat-completions"
+    }
+  ]
+}

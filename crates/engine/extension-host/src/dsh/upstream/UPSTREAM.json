@@ -1,0 +1,196 @@
+{
+  "repository": "https://github.com/deepseek-ai/deepseek-harness",
+  "commit": "66491b05e3f05ad35bcdd4f6cd7ed26041d9e3db",
+  "license": "MIT; Shigma 2021-present",
+  "files": [
+    {
+      "path": "loader/LICENSE",
+      "upstream_path": "vendor/loader/LICENSE",
+      "upstream_sha256": "034fb52b1d57360ecbae6cb1632a88f86fd7c3d3f5631a5f082710203dda0be7",
+      "sha256": "034fb52b1d57360ecbae6cb1632a88f86fd7c3d3f5631a5f082710203dda0be7",
+      "verbatim": true
+    },
+    {
+      "path": "loader/package.json",
+      "upstream_path": "vendor/loader/package.json",
+      "upstream_sha256": "ab6b44d86747ab7f09756f7d2c0a93c60d1b913f565d2e5d00449edadf3c2b1b",
+      "sha256": "ab6b44d86747ab7f09756f7d2c0a93c60d1b913f565d2e5d00449edadf3c2b1b",
+      "verbatim": true
+    },
+    {
+      "path": "loader/src/config/entry.ts",
+      "upstream_path": "vendor/loader/src/config/entry.ts",
+      "upstream_sha256": "650e4e1f3015bcca63c5a3474310f87a418add6249d9939d173a2b79f2ee7d9b",
+      "sha256": "8f0e7c06b4a3059bd890a75be96261111534ea5031781e592d522949ff7d32f8",
+      "verbatim": false,
+      "deltas": [
+        "Explicit types and context casts for the host strict TypeScript configuration; no suppression or algorithm replacement.",
+        "Use the six exact Cordis 4.1.0 const-enum values from ../../../../fiber-state.ts because published JavaScript erases the enum.",
+        "Set the framework filter symbol via Reflect.set because the published Context declarations do not expose its symbol index; runtime assignment is unchanged."
+      ]
+    },
+    {
+      "path": "loader/src/config/group.ts",
+      "upstream_path": "vendor/loader/src/config/group.ts",
+      "upstream_sha256": "9f63daea792e38a106c841e2ca062ded8fb67177665e8dcee821992b2071c017",
+      "sha256": "9f63daea792e38a106c841e2ca062ded8fb67177665e8dcee821992b2071c017",
+      "verbatim": true
+    },
+    {
+      "path": "loader/src/config/isolate.ts",
+      "upstream_path": "vendor/loader/src/config/isolate.ts",
+      "upstream_sha256": "70c7f8050a4fdc65031e956c5dae0a751d793ebdb51e5c955312666603c977a3",
+      "sha256": "988006c99c2bc5edfddf009c62bcd5f942d5707249aef79de5dced0780e92c10",
+      "verbatim": false,
+      "deltas": [
+        "Explicit types and context casts for the host strict TypeScript configuration; no suppression or algorithm replacement."
+      ]
+    },
+    {
+      "path": "loader/src/config/tree.ts",
+      "upstream_path": "vendor/loader/src/config/tree.ts",
+      "upstream_sha256": "dd856ead27ac9b81e88dd51b13753f138d7951cc6d6bf3e5cfcbe206281aa503",
+      "sha256": "299635e1c9a09b5ef567d6c60a1d72f5b1ff78ae210beccfabf076e0f2b26abc",
+      "verbatim": false,
+      "deltas": [
+        "Bare specifiers keep the native import() fallback instead of upstream createResolve(), which writes a .cordis/resolve.mjs helper into the package scope and imports it; reviewed compositions resolve only through the Rust-approved module closure."
+      ]
+    },
+    {
+      "path": "loader/src/config/utils.ts",
+      "upstream_path": "vendor/loader/src/config/utils.ts",
+      "upstream_sha256": "d85b8ac1693af4667e9c0395cd1d6b15ec28387073a81f0d00bd38d909a05f8e",
+      "sha256": "f3b8bae34be969b8a4c1af3db1677376d6746cd61fccc268ea4d8208ae5e735b",
+      "verbatim": false,
+      "deltas": [
+        "Explicit types and context casts for the host strict TypeScript configuration; no suppression or algorithm replacement."
+      ]
+    },
+    {
+      "path": "loader/src/index.ts",
+      "upstream_path": "vendor/loader/src/index.ts",
+      "upstream_sha256": "e2d04b34ef703e08d2e40f0ba41daa31ff564343cfeb018f102133fc62317050",
+      "sha256": "13e56d5065be15e0f5b0fe1be54c446b29e5323e4acb94796a6344eedcb1d00b",
+      "verbatim": false,
+      "deltas": [
+        "Disable optional native-internals/addon probe; retain the upstream ESM fallback.",
+        "Use the six exact Cordis 4.1.0 const-enum values from ../../../fiber-state.ts because published JavaScript erases the enum.",
+        "Explicit types and context casts for the host strict TypeScript configuration; no suppression or algorithm replacement."
+      ]
+    },
+    {
+      "path": "loader/src/internal.ts",
+      "upstream_path": "vendor/loader/src/internal.ts",
+      "upstream_sha256": "35a50d597fed58656a11e3c5294fdf99524ed8c106739b4fab522a288eefa877",
+      "sha256": "35a50d597fed58656a11e3c5294fdf99524ed8c106739b4fab522a288eefa877",
+      "verbatim": true
+    },
+    {
+      "path": "loader/tsconfig.json",
+      "upstream_path": "vendor/loader/tsconfig.json",
+      "upstream_sha256": "3f2c18a1ce52d335d7151317ecc9b7984692e79f15a5336dfdafe80f03a5d6d0",
+      "sha256": "628aca261b00622def7df904b885472bf86a7098b9dd47d73730511ad3e407af",
+      "verbatim": false,
+      "deltas": [
+        "Extend the existing host strict configuration; the upstream root configuration is not vendored."
+      ]
+    },
+    {
+      "path": "loader/tsdown.config.ts",
+      "upstream_path": "vendor/loader/tsdown.config.ts",
+      "upstream_sha256": "30e7b11e99a28f715da365d3f3ebc48bd75f62953d663ccf6ff7eaf54eacdee1",
+      "sha256": "30e7b11e99a28f715da365d3f3ebc48bd75f62953d663ccf6ff7eaf54eacdee1",
+      "verbatim": true
+    },
+    {
+      "path": "include/LICENSE",
+      "upstream_path": "vendor/include/LICENSE",
+      "upstream_sha256": "034fb52b1d57360ecbae6cb1632a88f86fd7c3d3f5631a5f082710203dda0be7",
+      "sha256": "034fb52b1d57360ecbae6cb1632a88f86fd7c3d3f5631a5f082710203dda0be7",
+      "verbatim": true
+    },
+    {
+      "path": "include/package.json",
+      "upstream_path": "vendor/include/package.json",
+      "upstream_sha256": "3b5cba7e54cf99b8e60f1b489abd14be2e0953f8145ae0d11051d2d1d239189e",
+      "sha256": "3b5cba7e54cf99b8e60f1b489abd14be2e0953f8145ae0d11051d2d1d239189e",
+      "verbatim": true
+    },
+    {
+      "path": "include/src/index.ts",
+      "upstream_path": "vendor/include/src/index.ts",
+      "upstream_sha256": "43ddf01220a45fbbe8c0fd64d5d4944fe42dedcd0862127d6ede1d6086b9d053",
+      "sha256": "d103ea246ebdbd2859d8b926729ad489e3571f172ed90a0bc7d8121078b5250e",
+      "verbatim": false,
+      "deltas": [
+        "Explicit types and context casts for the host strict TypeScript configuration; no suppression or algorithm replacement."
+      ]
+    },
+    {
+      "path": "include/tsconfig.json",
+      "upstream_path": "vendor/include/tsconfig.json",
+      "upstream_sha256": "e389562c9879bc4db6fdfe7fd8c2189c7fb62cb36cec4bf8621ed3cca138bddb",
+      "sha256": "628aca261b00622def7df904b885472bf86a7098b9dd47d73730511ad3e407af",
+      "verbatim": false,
+      "deltas": [
+        "Extend the existing host strict configuration; the upstream root configuration is not vendored."
+      ]
+    },
+    {
+      "path": "group/src/index.ts",
+      "upstream_path": "vendor/group/src/index.ts",
+      "upstream_sha256": "e3679df2068439b6624ef2b247f1e28db0de769f4986db3bd3da077f0d2269e6",
+      "sha256": "e3679df2068439b6624ef2b247f1e28db0de769f4986db3bd3da077f0d2269e6",
+      "verbatim": true
+    },
+    {
+      "path": "group/package.json",
+      "upstream_path": "vendor/group/package.json",
+      "upstream_sha256": "30f68079e1da306deec57272552301a3ca170079ecfcf600cc683f92071a36a0",
+      "sha256": "30f68079e1da306deec57272552301a3ca170079ecfcf600cc683f92071a36a0",
+      "verbatim": true
+    },
+    {
+      "path": "group/LICENSE",
+      "upstream_path": "vendor/group/LICENSE",
+      "upstream_sha256": "034fb52b1d57360ecbae6cb1632a88f86fd7c3d3f5631a5f082710203dda0be7",
+      "sha256": "034fb52b1d57360ecbae6cb1632a88f86fd7c3d3f5631a5f082710203dda0be7",
+      "verbatim": true
+    },
+    {
+      "path": "loader/src/config/diff.ts",
+      "upstream_path": "vendor/loader/src/config/diff.ts",
+      "upstream_sha256": "6025a6b9798a0a16af017bb7d8d6394bbe345685b2ace56b15975add5843edb3",
+      "sha256": "6025a6b9798a0a16af017bb7d8d6394bbe345685b2ace56b15975add5843edb3",
+      "verbatim": true
+    },
+    {
+      "path": "include/src/journal.ts",
+      "upstream_path": "vendor/include/src/journal.ts",
+      "upstream_sha256": "219b874ab6a7045fb5065fdbd114fe307eae89e68ab5a59d25aff9b53710187d",
+      "sha256": "918c0ce1a3f773f289f774e9945b2d0892c8aaa1c4edb40adb87d5096af72e79",
+      "verbatim": false,
+      "deltas": [
+        "Explicit types and context casts for the host strict TypeScript configuration; no suppression or algorithm replacement."
+      ]
+    },
+    {
+      "path": "include/src/patch.ts",
+      "upstream_path": "vendor/include/src/patch.ts",
+      "upstream_sha256": "38281b6365faaca6d99027716644d58ee85cba133e1fe2c36afc017cf011ae57",
+      "sha256": "4579467d8b678880f566c23cfad78d6531cb0de1d445a8f45431e63916e8fc25",
+      "verbatim": false,
+      "deltas": [
+        "Explicit types and context casts for the host strict TypeScript configuration; no suppression or algorithm replacement."
+      ]
+    }
+  ],
+  "adapted_audit": {
+    "source": "packages/preset/agent-presets/src/mount.ts",
+    "sha256": "7f0b3245de4a22501d39072bc239e4230f498d92a757f1ff56ea710bcfaf1eb8",
+    "usage": "fiber identity/root-realm leakage and row activation checks adapted; no preset/session service imported",
+    "commit": "0d1f50007f9bca3f52b06e1c3074fa14d5fb0720"
+  },
+  "integration": "The existing host uses this loader for reviewed native composition; the offline reviewer shares its parser without executing plugin code.",
+  "tag": "dsh-v0.2.2-rc.1"
+}

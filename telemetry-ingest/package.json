@@ -1,0 +1,29 @@
+{
+  "name": "codewhale-telemetry-ingest",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Write-only first-party telemetry ingest for Codewhale \u2014 a Cloudflare Worker that stores nothing outside docs/TELEMETRY.md and never sees a client IP",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "report:active-installs": "node scripts/report-active-installs.mjs",
+    "report:dau": "node scripts/report-dau.mjs",
+    "dev": "wrangler dev",
+    "check": "wrangler deploy --dry-run --outdir=.wrangler/dry-run",
+    "deploy": "wrangler deploy",
+    "report:funnel": "node scripts/report-funnel.mjs",
+    "report:contributions": "node scripts/report-contribution-cohorts.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "typescript": "^5.7.3",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.107.0"
+  },
+  "overrides": {
+    "sharp": "0.35.5",
+    "undici": "7.30.1",
+    "source-map-js": "1.2.2"
+  }
+}

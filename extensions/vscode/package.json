@@ -1,0 +1,215 @@
+{
+  "name": "codewhale-vscode",
+  "displayName": "Codewhale",
+  "description": "Official Codewhale VS Code extension: agentic chat in the secondary sidebar over the local Engine Runtime API, with editor context, streaming turns, approvals, and terminal parity.",
+  "version": "0.10.3",
+  "publisher": "codewhale",
+  "license": "MIT",
+  "preview": true,
+  "icon": "media/icon.png",
+  "homepage": "https://github.com/codewhale-hq/CodeWhale#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codewhale-hq/CodeWhale.git",
+    "directory": "extensions/vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/codewhale-hq/CodeWhale/issues"
+  },
+  "qna": "https://github.com/codewhale-hq/CodeWhale/issues",
+  "engines": {
+    "vscode": "^1.96.2"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Other"
+  ],
+  "keywords": [
+    "codewhale",
+    "agent",
+    "ai",
+    "chat",
+    "coding"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:codewhale.ask",
+    "onCommand:codewhale.newChat",
+    "onCommand:codewhale.openTerminal",
+    "onCommand:codewhale.startRuntime",
+    "onCommand:codewhale.checkRuntime",
+    "onCommand:codewhale.setRuntimeToken",
+    "onCommand:codewhale.refreshAgentView",
+    "onCommand:codewhale.refreshSnapshots",
+    "onCommand:codewhale.openRuntimeDocs",
+    "onView:codewhale.chat",
+    "onView:codewhale.chatSecondary"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codewhale.ask",
+        "title": "CodeWhale: Ask Codewhale"
+      },
+      {
+        "command": "codewhale.newChat",
+        "title": "CodeWhale: New Chat"
+      },
+      {
+        "command": "codewhale.setRuntimeToken",
+        "title": "CodeWhale: Set Runtime Token"
+      },
+      {
+        "command": "codewhale.openTerminal",
+        "title": "CodeWhale: Open Terminal"
+      },
+      {
+        "command": "codewhale.startRuntime",
+        "title": "CodeWhale: Start Local Runtime"
+      },
+      {
+        "command": "codewhale.checkRuntime",
+        "title": "CodeWhale: Check Runtime"
+      },
+      {
+        "command": "codewhale.refreshAgentView",
+        "title": "CodeWhale: Refresh Agent View"
+      },
+      {
+        "command": "codewhale.refreshSnapshots",
+        "title": "CodeWhale: Refresh Restore Points"
+      },
+      {
+        "command": "codewhale.openRuntimeDocs",
+        "title": "CodeWhale: Open Runtime API Docs"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "codewhale.ask",
+        "key": "ctrl+alt+c",
+        "mac": "ctrl+alt+c",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "codewhale.ask",
+          "when": "editorTextFocus",
+          "group": "codewhale"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Codewhale",
+      "properties": {
+        "codewhale.commandPath": {
+          "type": "string",
+          "default": "codewhale",
+          "scope": "machine",
+          "description": "Command or absolute path used to launch Codewhale. Machine-scoped: a workspace cannot point the client at another executable."
+        },
+        "codewhale.runtimeHost": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "scope": "machine",
+          "description": "Local host used for Codewhale runtime attach checks. Machine-scoped: a workspace cannot retarget the client at another host."
+        },
+        "codewhale.runtimePort": {
+          "type": "number",
+          "default": 7878,
+          "minimum": 1,
+          "maximum": 65535,
+          "scope": "machine",
+          "description": "Local port used for Codewhale runtime attach checks. Machine-scoped: a workspace cannot retarget the client at another port."
+        },
+        "codewhale.runtimeToken": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "description": "Optional bearer token for authenticated runtime endpoints. Prefer CodeWhale: Set Runtime Token, which stores it in VS Code secret storage.",
+          "deprecationMessage": "Tokens set here live in plaintext settings. Use CodeWhale: Set Runtime Token instead; values entered there take precedence.",
+          "markdownDeprecationMessage": "Tokens set here live in plaintext settings. Use **CodeWhale: Set Runtime Token** instead; a token in secret storage takes precedence."
+        },
+        "codewhale.agentViewRefreshIntervalSeconds": {
+          "type": "number",
+          "default": 15,
+          "minimum": 0,
+          "maximum": 300,
+          "description": "Seconds between read-only runtime refreshes. Set to 0 to disable automatic refresh."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codewhale",
+          "title": "Codewhale",
+          "icon": "media/codewhale.svg",
+          "when": "codewhale.noSecondarySidebar"
+        }
+      ],
+      "secondarySidebar": [
+        {
+          "id": "codewhaleSecondary",
+          "title": "Codewhale",
+          "icon": "media/codewhale.svg",
+          "when": "!codewhale.noSecondarySidebar"
+        }
+      ]
+    },
+    "views": {
+      "codewhale": [
+        {
+          "type": "webview",
+          "id": "codewhale.chat",
+          "name": "Codewhale",
+          "when": "codewhale.noSecondarySidebar"
+        },
+        {
+          "type": "webview",
+          "id": "codewhale.runtimeStatus",
+          "name": "Runtime",
+          "when": "codewhale.noSecondarySidebar"
+        }
+      ],
+      "codewhaleSecondary": [
+        {
+          "type": "webview",
+          "id": "codewhale.chatSecondary",
+          "name": "Codewhale",
+          "when": "!codewhale.noSecondarySidebar"
+        },
+        {
+          "type": "webview",
+          "id": "codewhale.runtimeStatus",
+          "name": "Runtime",
+          "when": "!codewhale.noSecondarySidebar"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "check": "npm run compile",
+    "test": "npm run compile && node --test out/test/*.test.js",
+    "package": "vsce package --no-dependencies",
+    "audit:dependencies": "node scripts/audit-dependencies.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.27",
+    "@types/vscode": "1.96.0",
+    "@vscode/vsce": "^4.0.0",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@azure/identity": {
+      "@azure/msal-node": "^7.1.2"
+    },
+    "minimatch": "^11.0.1"
+  }
+}

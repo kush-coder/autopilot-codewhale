@@ -1,0 +1,50 @@
+{
+  "server_received": [],
+  "steps": [
+    {
+      "op": "boot",
+      "outcome": "ok"
+    },
+    {
+      "op": "catalog",
+      "tools": [
+        {
+          "allowed_callers": [
+            "direct"
+          ],
+          "defer_loading": false,
+          "description": "",
+          "input_schema": {
+            "properties": {},
+            "type": "object"
+          },
+          "name": "mcp_conformance_alpha"
+        },
+        {
+          "allowed_callers": [
+            "direct"
+          ],
+          "defer_loading": false,
+          "description": "Second page.",
+          "input_schema": {
+            "properties": {},
+            "type": "object"
+          },
+          "name": "mcp_conformance_mid"
+        },
+        {
+          "allowed_callers": [
+            "direct"
+          ],
+          "defer_loading": false,
+          "description": "First page, listed first.",
+          "input_schema": {
+            "properties": {},
+            "type": "object"
+          },
+          "name": "mcp_conformance_zulu"
+        }
+      ]
+    }
+  ]
+}

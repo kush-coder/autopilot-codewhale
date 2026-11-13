@@ -1,0 +1,225 @@
+[package]
+name = "codewhale-tui"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Terminal UI for open-source and open-weight coding models"
+autobins = false
+# crates.io rejects packages over 10 MiB compressed, and this crate's test
+# sources, extension-host build inputs and dev-only assets push the package
+# past that cap (0.10.1's upload was refused with HTTP 413 at 11.9 MiB). None
+# of these are compiled, embedded or read by `cargo build` / `cargo install`;
+# the repository keeps them for CI, local test runs and the extension-host
+# build, and only the published package omits them.
+exclude = [
+  "tests/**",
+  "src/**/tests.rs",
+  "src/**/tests/**",
+  "src/**/*_tests.rs",
+  "src/**/test_cases_*.rs",
+  "src/**/*_legacy.rs",
+  "src/**/*test_support.rs",
+  "src/**/*acceptance.rs",
+  "src/conformance.rs",
+  "src/conformance/**",
+  "src/lib/terminal_mode_test_cases_*.rs",
+  "src/llm_client/mock.rs",
+  "src/skills/catalog_matrix.rs",
+  "src/compaction/survival_contract.rs",
+  "src/compaction/SURVIVAL_CONTRACT.md",
+  "src/compaction/fixtures/**",
+  "src/commands/contract/config_policy_baseline.rs",
+  "src/commands/contract/fixtures/**",
+  "src/commands/fixtures/diagnostics/**",
+  "src/commands/fixtures/*_baseline.md",
+  "src/commands/fixtures/*_baseline.json",
+  "src/pricing/default_coverage_unpriced.json",
+  "src/tui/golden_harness.rs",
+  "src/tui/goldens/**",
+  "src/tui/pet_watch/worker.rs",
+  "src/tui/widgets/pending_input_preview/legacy_fixture.rs",
+  "assets/mark-*.png",
+  "assets/skills-catalog-matrix.json",
+  "extension-host/test/**",
+  "extension-host/node_modules/**",
+  "extension-host/build.mjs",
+  "extension-host/compile-host.mjs",
+  "extension-host/package-lock.json",
+  "extension-host/scripts/**",
+  "extension-host/src/**/*.ts",
+  "extension-host/src/dsh/dsh-tools-compat.js",
+  "extension-host/dist/agent-presets.mjs",
+  "extension-host/dist/avatars.mjs",
+  "extension-host/dist/builtin-modules.json",
+  "extension-host/dist/protocol.mjs",
+  "extension-host/dist/rpc.mjs",
+  "extension-host/dist/shell-hooks.mjs",
+  "extension-host/dist/skills.mjs",
+  "extension-host/dist/stock-adapters.mjs",
+]
+
+[lints]
+workspace = true
+
+[features]
+default = []
+long-running-tests = ["codewhale-engine/long-running-tests"]
+test-thread-scoped-state = ["codewhale-engine/test-thread-scoped-state"]
+# Accepted compatibility feature names. Allocators belong exclusively to the
+# canonical codewhale-cli executable; these library aliases have no effect.
+mimalloc-allocator = []
+rusty-alloc = []
+
+[lib]
+name = "codewhale_tui"
+path = "src/lib.rs"
+doctest = false
+
+[dependencies]
+# Independent terminal kit, pinned and vendored for reproducible binary builds.
+codewhale-ratatui = { path = "../../vendor/codewhale-ratatui", version = "0.2.0" }
+codewhale-sanitize = { path = "../sanitize", version = "0.10.3" }
+anyhow.workspace = true
+codewhale-account-cli = { path = "../account-cli", version = "0.10.3" }
+codewhale-agent-contract = { path = "../agent-contract", version = "0.10.3" }
+codewhale-app-server = { path = "../app-server", version = "0.10.3" }
+codewhale-engine = { path = "../engine", version = "0.10.3" }
+codewhale-config = { path = "../config", version = "0.10.3" }
+codewhale-cloud-facts = { path = "../cloud-facts", version = "0.10.3" }
+codewhale-command-contract = { path = "../command-contract", version = "0.10.3" }
+codewhale-commands = { path = "../commands", version = "0.10.3" }
+codewhale-core = { path = "../core", version = "0.10.3" }
+codewhale-execpolicy = { path = "../execpolicy", version = "0.10.3" }
+codewhale-hooks = { path = "../hooks", version = "0.10.3" }
+codewhale-lane = { path = "../lane", version = "0.10.3" }
+codewhale-mcp = { path = "../mcp", version = "0.10.3" }
+codewhale-models = { path = "../models", version = "0.10.3" }
+codewhale-net = { path = "../net", version = "0.10.3" }
+codewhale-notify = { path = "../notify", version = "0.10.3" }
+codewhale-palette = { path = "../palette", version = "0.10.3" }
+codewhale-paths = { path = "../paths", version = "0.10.3" }
+codewhale-protocol = { path = "../protocol", version = "0.10.3" }
+codewhale-release = { path = "../release", version = "0.10.3" }
+codewhale-runtime = { path = "../runtime", version = "0.10.3" }
+codewhale-sandbox = { path = "../sandbox", version = "0.10.3" }
+codewhale-secrets = { path = "../secrets", version = "0.10.3" }
+codewhale-telemetry = { path = "../telemetry", version = "0.10.3" }
+codewhale-dependencies = { path = "../dependencies", version = "0.10.3" }
+codewhale-lsp = { path = "../lsp", version = "0.10.3" }
+codewhale-snapshot = { path = "../snapshot", version = "0.10.3" }
+codewhale-plugins = { path = "../plugins", version = "0.10.3" }
+codewhale-skill-install = { path = "../skill-install", version = "0.10.3" }
+codewhale-skills = { path = "../skills", version = "0.10.3" }
+codewhale-util = { path = "../util", version = "0.10.3" }
+codewhale-tui-kit = { path = "../tui-kit", version = "0.10.3" }
+codewhale-error-taxonomy = { path = "../error-taxonomy", version = "0.10.3" }
+codewhale-tools = { path = "../tools", version = "0.10.3" }
+codewhale-workflow = { path = "../workflow", version = "0.10.3" }
+async-stream = "0.3.6"
+async-trait.workspace = true
+base64 = "0.23.1"
+axum.workspace = true
+clap.workspace = true
+colored = "3.0.0"
+crossterm = "0.29"
+dotenvy = "0.15.7"
+fd-lock = "4.0.4"
+dirs.workspace = true
+futures-util = "0.3.31"
+# No ratatui-core pin: ColorCompatBackend answers `get_cursor_position()`
+# from tracked state (ratatui#2640's recommended workaround), so the CPR query
+# inside `Terminal::clear()` no longer races the input loop. See
+# `tui/color_compat.rs`.
+ratatui = { version = "=0.30.2", features = ["unstable-rendered-line-info"] }
+regex = "1.11"
+reqwest = { workspace = true, features = ["blocking", "stream", "form", "http2"] }
+rquickjs.workspace = true
+rustls.workspace = true
+ansi-to-tui = { version = "8.0.1", default-features = false }
+serde.workspace = true
+serde_json = { workspace = true, features = ["preserve_order", "raw_value"] }
+toml.workspace = true
+toml_edit.workspace = true
+tokio.workspace = true
+tokio-util = { version = "0.7.16", features = ["io"] }
+unicode-width = "0.2"
+unicode-segmentation = "1.12"
+urlencoding = "2.1"
+# Structcopy uses the URL parser directly so its portable closure needs no HTTP client.
+url = "2.5"
+uuid.workspace = true
+chrono.workspace = true
+tempfile.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+wait-timeout = "0.2"
+webbrowser = "1.0"
+shlex = "2.0.1"
+ignore = "0.4"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif"] }
+htmd = "0.5.4"
+parking_lot = "0.12"
+tar = "0.4"
+flate2 = "1.1"
+sha2.workspace = true
+semver.workspace = true
+codewhale-localization = { path = "../localization", version = "0.10.3" }
+
+[build-dependencies]
+codewhale-build-support = { path = "../build-support", version = "0.10.3" }
+
+[dev-dependencies]
+codewhale-engine = { path = "../engine", version = "0.10.3", features = ["test-support"] }
+codewhale-skills = { path = "../skills", version = "0.10.3", features = ["test-support"] }
+codewhale-tui-kit = { path = "../tui-kit", version = "0.10.3", features = ["test-support"] }
+codewhale-dependencies = { path = "../dependencies", version = "0.10.3", features = ["test-support"] }
+codewhale-error-taxonomy = { path = "../error-taxonomy", version = "0.10.3", features = ["test-support"] }
+codewhale-lsp = { path = "../lsp", version = "0.10.3", features = ["test-support"] }
+codewhale-snapshot = { path = "../snapshot", version = "0.10.3", features = ["test-support"] }
+codewhale-notify = { path = "../notify", version = "0.10.3", features = ["test-thread-scoped-state"] }
+codewhale-config = { path = "../config", version = "0.10.3", features = ["schema", "test-support"] }
+codewhale-agent-contract = { path = "../agent-contract", version = "0.10.3", features = [
+    "test-support",
+] }
+codewhale-runtime = { path = "../runtime", version = "0.10.3", features = [
+    "test-support",
+    "test-thread-scoped-state",
+] }
+codewhale-sandbox = { path = "../sandbox", version = "0.10.3", features = ["test-support"] }
+codewhale-plugins = { path = "../plugins", version = "0.10.3", features = ["test-support"] }
+codewhale-skill-install = { path = "../skill-install", version = "0.10.3", features = ["test-support"] }
+codewhale-util = { path = "../util", version = "0.10.3", features = ["test-support"] }
+codewhale-models = { path = "../models", version = "0.10.3", features = [
+    "test-support",
+] }
+cucumber = "0.23.0"
+wiremock = "0.6"
+tiny_http = "0.12"
+pretty_assertions = "1.4"
+rio-vt = "0.5.1"
+rusqlite.workspace = true
+schemars = { version = "1.2.1", features = ["derive", "preserve_order"] }
+tokio-tungstenite = "0.30"
+codewhale-app-server = { path = "../app-server", version = "0.10.3", features = ["test-support"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61.2", features = ["Wdk_Storage_FileSystem", "Win32_System_IO", "Win32_Foundation", "Win32_Security", "Win32_Security_Authorization", "Win32_Security_Isolation", "Win32_Storage_FileSystem", "Win32_System_LibraryLoader", "Win32_System_Pipes", "Win32_System_Threading", "Win32_System_SystemServices", "Win32_System_WindowsProgramming"] }
+
+
+[target.'cfg(any(target_os = "macos", target_os = "windows", all(target_os = "linux", not(target_env = "ohos"))))'.dependencies]
+arboard = { version = "3.4", features = ["wayland-data-control"] }
+
+[target.'cfg(not(target_env = "ohos"))'.dependencies]
+portable-pty = "0.9"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6.3"
+objc2-foundation = { version = "0.3.2", default-features = false, features = ["std", "NSArray", "NSDictionary", "NSError", "NSObject", "NSString", "NSURL"] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows = { version = "0.62", features = ["Win32_Foundation", "Win32_Security", "Win32_Security_Authorization", "Win32_Storage_FileSystem", "Win32_System_Console", "Win32_System_Diagnostics_ToolHelp", "Win32_System_Environment", "Win32_System_JobObjects", "Win32_System_Registry", "Win32_System_Threading", "Win32_UI_WindowsAndMessaging"] }

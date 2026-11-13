@@ -1,0 +1,20 @@
+[package]
+name = "codewhale-command-contract"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Prototype command capability and dispatch shapes for the staged TUI command extraction"
+
+[lints]
+workspace = true
+
+[dependencies]
+codewhale-protocol = { path = "../protocol", version = "0.10.3" }
+# FEAT-025 export projections carry JSON tool payloads. The workspace already
+# pins serde_json with `preserve_order` (crates/core and crates/tui), so this
+# adds no new external dependency to the graph.
+serde_json = { workspace = true, features = ["preserve_order"] }
+serde = { workspace = true, features = ["derive"] }
+chrono.workspace = true

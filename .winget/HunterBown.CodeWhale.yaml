@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.singleton.1.12.0.schema.json
+
+PackageIdentifier: HunterBown.CodeWhale
+PackageVersion: 0.10.2
+PackageLocale: en-US
+ManifestType: singleton
+ManifestVersion: 1.12.0
+
+Publisher: Hmbown
+PublisherUrl: https://github.com/Hmbown
+PublisherSupportUrl: https://github.com/codewhale-hq/CodeWhale/issues
+PackageName: CodeWhale
+PackageUrl: https://github.com/codewhale-hq/CodeWhale
+License: MIT
+LicenseUrl: https://github.com/codewhale-hq/CodeWhale/blob/main/LICENSE
+Copyright: Copyright (c) Hmbown
+ShortDescription: Terminal coding agent for supported hosted and local models
+Description: |
+  CodeWhale runs in your terminal, connects to hosted and local models, and edits your workspace with approval controls.
+Author: Hmbown
+Moniker: codewhale
+Tags:
+  - codewhale
+  - deepseek
+  - cli
+  - tui
+  - terminal
+  - ai
+  - coding-agent
+  - rust
+ReleaseNotesUrl: https://github.com/codewhale-hq/CodeWhale/releases/tag/v0.10.2
+Documentations:
+  - DocumentLabel: Install guide
+    DocumentUrl: https://github.com/codewhale-hq/CodeWhale/blob/main/docs/INSTALL.md
+
+InstallerType: portable
+Commands:
+  - codewhale
+Dependencies:
+  PackageDependencies:
+    - PackageIdentifier: Microsoft.VCRedist.2015+.x64
+Installers:
+  - Architecture: x64
+    InstallerUrl: https://github.com/codewhale-hq/Codewhale/releases/download/v0.10.2/codewhale-tui-windows-x64.exe
+    InstallerSha256: 578280bec8d6e0ee9cfe97ee29de817535689f4078d8afd47384ff1941b1ee6c

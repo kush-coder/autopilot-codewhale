@@ -1,0 +1,178 @@
+"use client";
+
+import { useState } from "react";
+import { draftStorageKey, reviewedBodyHash, type AgentDraft } from "@/lib/community-agent";
+
+interface Props {
+  drafts: AgentDraft[];
+  posted: AgentDraft[];
+  isZh: boolean;
+  typeLabels: Record<string, { en: string; zh: string }>;
+}
+
+export function AdminClient({ drafts, posted, isZh, typeLabels }: Props) {
+  const [items, setItems] = useState(drafts);
+  const [postedItems, setPostedItems] = useState(posted);
+  const [editing, setEditing] = useState<string | null>(null);
+  const [editBody, setEditBody] = useState("");
+  const [loading, setLoading] = useState<string | null>(null);
+
+  const handleAction = async (draft: AgentDraft, action: "post" | "discard", editedBody?: string) => {
+    const draftKey = draftStorageKey(draft);
+    setLoading(draftKey);
+    try {
+      // Binds the action to the text shown here; the route refuses it if the
+      // stored draft was regenerated since this page loaded.
+      const reviewedSha256 = await reviewedBodyHash(isZh ? draft.bodyZh : draft.bodyEn);
+      const res = await fetch("/api/admin/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action, draftKey, editedBody, lang: isZh ? "zh" : "en", reviewedSha256 }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        if (action === "discard") {
+          setItems((prev) => prev.filter((d) => draftStorageKey(d) !== draftKey));
+        } else if (action === "post") {
+          const posted = items.find((d) => draftStorageKey(d) === draftKey);
+          if (posted) {
+            setItems((prev) => prev.filter((d) => draftStorageKey(d) !== draftKey));
+            setPostedItems((prev) => [{ ...posted, posted: true }, ...prev]);
+          }
+        }
+        setEditing(null);
+        // The post went through but something after it did not (draft state
+        // not saved, or the digest was not published on /digest).
+        if (typeof data.warning === "string") alert(data.warning);
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (e) {
+      alert(`Network error: ${e}`);
+    } finally {
+      setLoading(null);
+    }
+  };
+
+  const startEdit = (draft: AgentDraft) => {
+    const key = draftStorageKey(draft);
+    setEditing(key);
+    setEditBody(isZh ? draft.bodyZh : draft.bodyEn);
+  };
+
+  return (
+    <>
+      {/* Pending drafts */}
+      {items.length > 0 && (
+        <div className="space-y-6">
+          <h2 className="font-display text-xl mt-8 mb-4">
+            {isZh ? "待审阅" : "Pending"} <span className="font-mono text-sm text-ink-mute ml-2">({items.length})</span>
+          </h2>
+          {items.map((draft) => {
+            const key = draftStorageKey(draft);
+            const label = typeLabels[draft.type] ?? { en: draft.type, zh: draft.type };
+            return (
+              <div key={key} className="group-card">
+                <div className="bg-paper-deep text-ink px-4 py-2 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-indigo">
+                      {isZh ? label.zh : label.en}
+                    </span>
+                    {draft.targetNumber && (
+                      <span className="font-mono text-xs text-ink-mute tabular">#{draft.targetNumber}</span>
+                    )}
+                  </div>
+                  <span className="font-mono text-xs text-ink-mute">
+                    {new Date(draft.generatedAt).toISOString().slice(0, 16)}
+                  </span>
+                </div>
+
+                <div className="p-4">
+                  {editing === key ? (
+                    <div className="space-y-3">
+                      <textarea
+                        value={editBody}
+                        onChange={(e) => setEditBody(e.target.value)}
+                        className="field-input h-48 py-3 font-mono text-sm resize-y"
+                      />
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleAction(draft, "post", editBody)}
+                          disabled={loading === key}
+                          className="btn btn-primary disabled:opacity-50"
+                        >
+                          {isZh ? "确认发布" : "Post edited"}
+                        </button>
+                        <button
+                          onClick={() => setEditing(null)}
+                          className="btn btn-secondary"
+                        >
+                          {isZh ? "取消" : "Cancel"}
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="prose prose-sm max-w-none text-sm text-ink-soft leading-relaxed whitespace-pre-wrap mb-4">
+                        {isZh ? draft.bodyZh : draft.bodyEn}
+                      </div>
+                      <div className="flex gap-2 flex-wrap">
+                        <button
+                          onClick={() => handleAction(draft, "post")}
+                          disabled={loading === key}
+                          className="btn btn-primary disabled:opacity-50"
+                        >
+                          {isZh ? "发布评论" : "Post as comment"}
+                        </button>
+                        <button
+                          onClick={() => startEdit(draft)}
+                          className="btn btn-secondary"
+                        >
+                          {isZh ? "编辑后发布" : "Edit & post"}
+                        </button>
+                        <button
+                          onClick={() => handleAction(draft, "discard")}
+                          disabled={loading === key}
+                          className="btn btn-danger"
+                        >
+                          {isZh ? "丢弃" : "Discard"}
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Posted drafts */}
+      {postedItems.length > 0 && (
+        <div className="mt-12">
+          <h2 className="font-display text-xl mb-4">
+            {isZh ? "已发布" : "Posted"} <span className="font-mono text-sm text-ink-mute ml-2">({postedItems.length})</span>
+          </h2>
+          {postedItems.map((draft) => {
+            const key = draftStorageKey(draft);
+            const label = typeLabels[draft.type] ?? { en: draft.type, zh: draft.type };
+            return (
+              <div key={key} className="hairline-t py-3 px-4 opacity-60">
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="text-xs text-ink-mute">
+                    {isZh ? label.zh : label.en}
+                  </span>
+                  {draft.targetNumber && (
+                    <span className="font-mono text-xs text-ink-mute tabular">#{draft.targetNumber}</span>
+                  )}
+                  <span className="ml-auto status status-ready"><span className="status-dot" aria-hidden="true" />{isZh ? "已发布" : "posted"}</span>
+                </div>
+                <p className="text-xs text-ink-mute line-clamp-2">{(isZh ? draft.bodyZh : draft.bodyEn).slice(0, 120)}…</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
+  );
+}
